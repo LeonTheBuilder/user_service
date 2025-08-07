@@ -1,4 +1,4 @@
-const CommonBizCodeMessages = Object.freeze({
+const UserCodeMessages = Object.freeze({
     invalid_signature: {code: 'invalid_signature', message: 'invalid_signature'},
     balance_insufficient: {code: 'balance_insufficient', message: 'balance_insufficient'},
     freeze_balance_insufficient: {code: 'freeze_balance_insufficient', message: 'freeze_balance_insufficient'},
@@ -9,5 +9,5 @@ const CommonBizCodeMessages = Object.freeze({
 
 
 module.exports = {
-    CommonBizCodeMessages,
+    UserCodeMessages,
 };

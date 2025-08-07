@@ -18,11 +18,11 @@ class UserService {
         });
 
         //
-        this.BizError.errIf(password != passwordRepeat, this.CommonBizCodeMessages.password_repeat_no_match);
+        this.BizError.errIf(password != passwordRepeat, this.UserCodeMessages.password_repeat_no_match);
 
         //
         const userEx = await this.User.findOne({where: {username}});
-        this.BizError.errIf(userEx, this.CommonBizCodeMessages.username_dup);
+        this.BizError.errIf(userEx, this.UserCodeMessages.username_dup);
 
         //
         const userId = await this.idgen.next();
@@ -47,9 +47,9 @@ class UserService {
         });
         //
         const user = await this.User.findOne({where: {username}});
-        this.BizError.errIf(!user, this.CommonBizCodeMessages.login_fail);
+        this.BizError.errIf(!user, this.UserCodeMessages.login_fail);
         //
-        this.BizError.errIf(user.password !== this.Sugar.passwordToHash(password), this.CommonBizCodeMessages.login_fail);
+        this.BizError.errIf(user.password !== this.Sugar.passwordToHash(password), this.UserCodeMessages.login_fail);
         //
         return user.id;
     }
