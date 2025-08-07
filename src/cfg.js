@@ -1,6 +1,6 @@
 const path = require("path");
 const cfgdef = require('aframework/cfgdef');
-const commonCfgSet = require('./cfgset');
+const userServiceSet = require('./cfgset');
 const cfg = cfgdef();
 //----------------------------------------------------------------
 cfg.loadContextFilePath = path.join(__dirname, 'loadcontext.js');
@@ -11,8 +11,8 @@ cfg.autowire.folders = [
 ];
 //----------------------------------------------------------------
 cfg.web.view.viewFolder = require('./web/views/viewfolder');
-cfg.mysql.database = 'commonbiz';
+cfg.mysql.database = 'user_service';
 //----------------------------------------------------------------
-commonCfgSet(cfg);
+userServiceSet(cfg);
 //----------------------------------------------------------------
 module.exports = cfg;

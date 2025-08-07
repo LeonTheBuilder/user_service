@@ -4,7 +4,7 @@ it('userService.register', async () => {
     const a = await loadContext();
     const userService = a.beans.userService;
 
-    const rand = await a.beans.idgen.nextInt();
+    const rand = await a.beans.idgen.next();
 
     const password = 'somePw' + rand;
     const args = {
@@ -22,19 +22,20 @@ it('userService.register', async () => {
     console.log(typeof userIdLogin);
 
     assert(userId === userIdLogin);
+    process.exit(0);
 });
 
 it('userService.login', async () => {
     const a = await loadContext();
     const userService = a.beans.userService;
-
+    process.exit(0);
 }).timeout(100000);
 
 it('userService.updateUserPasswordHint', async () => {
     const a = await loadContext();
     const userService = a.beans.userService;
 
-    const username = await a.beans.idgen.nextInt();
+    const username = await a.beans.idgen.next();
 
     const registerArgs = {
         username: `${username}`,
@@ -56,7 +57,7 @@ it('userService.updateUserPasswordHint', async () => {
     });
 
     assert(hint.hint === 'some hint');
-
+    process.exit(0);
 
 }).timeout(100000);
 

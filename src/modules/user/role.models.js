@@ -7,12 +7,12 @@ const UserRole = db.define(
     'UserRole',
     {
         id: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.STRING(25),
             allowNull: false,
             primaryKey: true,
         },
         userId: {
-            type: DataTypes.BIGINT,
+            type: DataTypes.STRING(25),
             allowNull: false,
         },
         role: {

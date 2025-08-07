@@ -25,7 +25,7 @@ class UserService {
         this.BizError.errIf(userEx, this.CommonBizCodeMessages.username_dup);
 
         //
-        const userId = await this.idgen.nextInt();
+        const userId = await this.idgen.next();
         const user = this.User.build({id: userId});
         user.nickName = '新用户';
         user.username = username;
@@ -77,12 +77,12 @@ class UserService {
         let userEndpoint = await this.UserEndpoint.findOne({where: {endpointType, endpoint}});
         if (!userEndpoint) {
             // create user by endpoint
-            const userId = await this.idgen.nextInt();
+            const userId = await this.idgen.next();
             const user = await this.User.build({id: userId});
             user.nickName = nickName || `User${userId}`;
             await user.save();
 
-            const userEndpointId = await this.idgen.nextInt();
+            const userEndpointId = await this.idgen.next();
             userEndpoint = await this.UserEndpoint.build({id: userEndpointId});
             userEndpoint.endpointType = endpointType;
             userEndpoint.endpoint = endpoint;
@@ -195,7 +195,7 @@ class UserService {
 
         this.BizError.paramsErrorIfAnyNone({endpointType, endpoint});
 
-        const rand = await this.idgen.nextInt();
+        const rand = await this.idgen.next();
         const randDigi = this.Sugar.randomDigits(5);
         const key = this.Sugar.passwordToHash(`${rand}${randDigi}`);
 
