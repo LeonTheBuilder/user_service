@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include(`${appcfg.nodeModulesPath}/web_resources/src/web/templates/_top.ejs`); %>
+<%- include(`${appcfg.app.rootFolder}/node_modules/web_resources/src/web/templates/_top.ejs`); %>
 <!----------------------------------------------------------------------->
 
 <div role="tablist" class="tabs tabs-lift tabs-xs w-full">
@@ -28,7 +28,7 @@
     <button class="btn btn-neutral mt-4" @click="login">登录</button>
 </fieldset>
 <!----------------------------------------------------------------------->
-<%- include(`${appcfg.nodeModulesPath}/web_resources/src/web/templates/_bottom.ejs`); %>
+<%- include(`${appcfg.app.rootFolder}/node_modules/web_resources/src/web/templates/_bottom.ejs`); %>
 <script type="text/javascript">
     createApp({
         data: {
