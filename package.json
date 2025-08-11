@@ -11,6 +11,7 @@
     "sequelize": "^6.37.7"
   },
   "dependencies": {
-    "aframework": "git+https://github.com/LeonTheBuilder/aframework.git"
+    "aframework": "git+https://github.com/LeonTheBuilder/aframework.git",
+    "web_resources": "git+https://github.com/LeonTheBuilder/web_resources.git"
   }
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include(`${appcfg.nodeModulesPath}/web_resources/src/web/templates/_top.ejs`); %>
+<!----------------------------------------------------------------------->
+
+<div role="tablist" class="tabs tabs-lift tabs-xs w-full">
+    <a role="tab" class="tab flex-1" :class="{'tab-active':showType ==='register'}"
+       @click="setShowType('register')">注册</a>
+    <a role="tab" class="tab flex-1" :class="{'tab-active':showType ==='login'}"
+       @click="setShowType('login')">登录</a>
+</div>
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 w-full" v-if="showType ==='register'">
+    <legend class="fieldset-legend">注册</legend>
+    <label class="label">用户名</label>
+    <input type="text" class="input w-full" placeholder="" v-model="username"/>
+    <label class="label">密码</label>
+    <input type="text" class="input w-full" placeholder="" v-model="password"/>
+    <label class="label">重复密码</label>
+    <input type="text" class="input w-full" placeholder="" v-model="passwordRepeat"/>
+    <button class="btn btn-neutral mt-4" @click="register">注册</button>
+</fieldset>
+<fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4 w-full" v-else>
+    <legend class="fieldset-legend">登录</legend>
+    <label class="label">用户名</label>
+    <input type="text" class="input w-full" placeholder="" v-model="username"/>
+    <label class="label">密码</label>
+    <input type="text" class="input w-full" placeholder="" v-model="password"/>
+    <button class="btn btn-neutral mt-4" @click="login">登录</button>
+</fieldset>
+<!----------------------------------------------------------------------->
+<%- include(`${appcfg.nodeModulesPath}/web_resources/src/web/templates/_bottom.ejs`); %>
+<script type="text/javascript">
+    createApp({
+        data: {
+            username: null,
+            password: null,
+            passwordRepeat: null,
+            showType: params.get('showType') || 'register',
+        },
+        methods: {
+            init: async function () {
+                let self = this;
+                self.initListeners();
+                EventOp.pub(CommonEventsDef.page_ready);
+            },
+            setShowType: async function (type) {
+                let self = this;
+                self.showType = type;
+            },
+            initListeners: function () {
+                let self = this;
+            },
+            register: async function () {
+                let self = this;
+                const res = await userService.register({
+                    username: self.username,
+                    password: self.password,
+                    passwordRepeat: self.passwordRepeat,
+                });
+                errMsgIf(res);
+                window.location.href = '/';
+            },
+            login: async function () {
+                let self = this;
+                const res = await userService.login({
+                    username: self.username,
+                    password: self.password,
+                });
+                errMsgIf(res);
+                window.location.href = '/';
+            },
+
+        },
+    });
+</script>
+</html>
