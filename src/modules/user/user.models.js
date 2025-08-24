@@ -32,6 +32,8 @@ const User = db.define(
 
     }
     , {
+        tableName: 'user_user',
+        freezeTableName: true,
         charset: 'utf8mb4',
         timestamps: true,
         createdAt: true,
@@ -60,6 +62,8 @@ const UserPasswordHint = db.define(
         },
     }
     , {
+        tableName: 'user_user_password_hit',
+        freezeTableName: true,
         charset: 'utf8mb4',
         timestamps: true,
         createdAt: true,
@@ -89,6 +93,8 @@ const UserEndpoint = db.define(
         },
     },
     {
+        tableName: 'user_user_endpoint',
+        freezeTableName: true,
         charset: 'utf8mb4',
         timestamps: true,
         createdAt: true,

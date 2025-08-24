@@ -21,6 +21,8 @@ const UserRole = db.define(
         },
     },
     {
+        tableName: 'user_user_role',
+        freezeTableName: true,
         charset: 'utf8mb4',
         timestamps: true,
         createdAt: true,
